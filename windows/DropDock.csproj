@@ -1,0 +1,35 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!--
+    Targets .NET Framework 4.8, which ships inside every Windows 10 (1903+) and Windows 11, so
+    DropDock.exe is one small file with nothing else to install.
+  -->
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net48</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <Nullable>disable</Nullable>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <AssemblyName>DropDock</AssemblyName>
+    <RootNamespace>DropDock</RootNamespace>
+    <ApplicationIcon>DropDock.ico</ApplicationIcon>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <Version>1.0.0</Version>
+    <Product>DropDock</Product>
+    <AssemblyTitle>DropDock</AssemblyTitle>
+    <Description>Send files and clips to your other computers</Description>
+    <Copyright>DropDock</Copyright>
+    <DebugType>none</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <Prefer32Bit>false</Prefer32Bit>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <EnableWindowsTargeting>true</EnableWindowsTargeting>
+    <GenerateDocumentationFile>false</GenerateDocumentationFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Drawing" />
+    <EmbeddedResource Include="DropDock.ico" LogicalName="DropDock.ico" />
+    <EmbeddedResource Include="../install/prompt-mac.txt" LogicalName="prompt-mac.txt" />
+    <EmbeddedResource Include="../install/prompt-windows.txt" LogicalName="prompt-windows.txt" />
+  </ItemGroup>
+</Project>

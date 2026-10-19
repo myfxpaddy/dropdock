@@ -1,0 +1,20 @@
+Install DropDock on this Windows PC for me. DropDock is my own app for sending files and clipboard text between my computers on the same Wi-Fi. The source code and the full setup guide are at https://github.com/myfxpaddy/dropdock (INSTALL.md, Windows section). Follow these steps start to finish:
+
+1. Install it by running this in PowerShell (a normal window is fine, no admin needed):
+   irm https://raw.githubusercontent.com/myfxpaddy/dropdock/main/install/windows.ps1 | iex
+   If that fails with a 404 (the repo is private), install the GitHub CLI if needed (winget install GitHub.cli), run `gh auth login` and ask me to finish the browser login, then run:
+   gh api repos/myfxpaddy/dropdock/contents/install/windows.ps1 -H "Accept: application/vnd.github.raw" | Out-String | iex
+
+2. While it starts, tell me to watch for the Windows Defender Firewall window: tick "Private networks" and click "Allow access". Without this my other computers cannot reach this PC. If I missed it, follow the firewall step in INSTALL.md (it needs one admin approval from me).
+
+3. Check the network: run Get-NetConnectionProfile. If the Wi-Fi shows NetworkCategory Public, explain that DropDock needs it set to Private and ask me before changing it.
+
+4. Check it worked: confirm Get-Process DropDock shows it running, confirm "$env:LOCALAPPDATA\Programs\DropDock\DropDock.exe" exists, and show me the last 10 lines of "$env:APPDATA\DropDock\dropdock.log". Lines starting with "found" mean it can see my other computers.
+
+5. Tell me how to pin it: open Start, right-click DropDock, choose Pin to taskbar.
+
+6. Tell me how to link it: open the DropDock bar by resting the pointer at the top edge of the screen (or clicking the DropDock tray icon), click one of my other computers marked "Click to link", check both computers show the same six-digit code, and click Allow on the other computer.
+
+7. If it cannot see my other computers after a minute, work through the Troubleshooting section of INSTALL.md with me.
+
+Do not change any other settings on this computer without asking me first.

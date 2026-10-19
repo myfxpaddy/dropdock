@@ -1,0 +1,16 @@
+Install DropDock on this Mac for me. DropDock is my own app for sending files and clipboard text between my computers on the same Wi-Fi. The source code and the full setup guide are at https://github.com/myfxpaddy/dropdock (INSTALL.md, Mac section). Follow these steps start to finish:
+
+1. Install it by running this in the terminal:
+   curl -fsSL https://raw.githubusercontent.com/myfxpaddy/dropdock/main/install/mac.sh | bash
+   If that fails with a 404 (the repo is private), run `gh auth login` and ask me to finish the browser login, then run:
+   gh api repos/myfxpaddy/dropdock/contents/install/mac.sh -H "Accept: application/vnd.github.raw" | bash
+
+2. While it starts, tell me to click Allow when macOS asks whether DropDock may find devices on the local network, and when it asks about the Documents and Desktop folders. These prompts appear on screen, not in the terminal.
+
+3. Check it worked: confirm `pgrep -fl DropDock.app` shows it running, confirm DropDock is in the Dock and that ~/Desktop/DropDock exists, and show me the last 10 lines of ~/Library/Application Support/DropDock/dropdock.log. Lines starting with "found" mean it can see my other computers.
+
+4. Tell me how to link it: open the DropDock bar on this Mac by resting the pointer at the top edge of a screen (or clicking DropDock in the Dock), click one of my other computers marked "Click to link", check both computers show the same six-digit code, and click Allow on the other computer.
+
+5. If it cannot see my other computers after a minute, work through the Troubleshooting section of INSTALL.md with me.
+
+Do not change any other settings on this computer without asking me first.

@@ -1,0 +1,8 @@
+build/
+dist/
+mac/.build/
+windows/bin/
+windows/obj/
+tests/interop/bin/
+tests/interop/obj/
+.DS_Store

@@ -11,7 +11,7 @@ namespace DropDock.App
     /// <summary>Everything needed to put DropDock on another computer. The prompts live in install/*.txt.</summary>
     static class Setup
     {
-        public const string Guide = "https://github.com/myfxpaddy/dropdock/blob/main/INSTALL.md";
+        public const string Guide = "https://github.com/myfxpaddy/dropdock#installation";
         public const string MacCommand = "curl -fsSL https://raw.githubusercontent.com/myfxpaddy/dropdock/main/install/mac.sh | bash";
         public const string WindowsCommand = "irm https://raw.githubusercontent.com/myfxpaddy/dropdock/main/install/windows.ps1 | iex";
 

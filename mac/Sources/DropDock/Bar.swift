@@ -197,17 +197,26 @@ final class BarController: NSObject {
         let f = panel.frame
         let info = "\(panel.windowNumber) \(Int(f.minX)) \(Int(f.minY)) \(Int(f.width)) \(Int(f.height))"
         try? info.write(to: url, atomically: true, encoding: .utf8)
-        // Render the layer tree over a dark backdrop (the blur itself cannot be captured this way).
-        let scale: CGFloat = 2
+        // Render the layer tree over a backdrop (the blur itself cannot be captured this way).
+        let scale: CGFloat = 2, margin: CGFloat = 36
         let size = effect.bounds.size
-        guard let ctx = CGContext(data: nil, width: Int(size.width * scale), height: Int(size.height * scale),
+        let canvas = CGSize(width: size.width + margin * 2, height: size.height + margin * 2)
+        guard let ctx = CGContext(data: nil, width: Int(canvas.width * scale), height: Int(canvas.height * scale),
                                   bitsPerComponent: 8, bytesPerRow: 0, space: CGColorSpaceCreateDeviceRGB(),
                                   bitmapInfo: CGImageAlphaInfo.premultipliedLast.rawValue),
               let layer = effect.layer else { return }
         ctx.scaleBy(x: scale, y: scale)
-        ctx.setFillColor(NSColor(white: 0.13, alpha: 1).cgColor)
+        let colors = [NSColor(srgbRed: 0.17, green: 0.24, blue: 0.45, alpha: 1).cgColor,
+                      NSColor(srgbRed: 0.05, green: 0.07, blue: 0.14, alpha: 1).cgColor] as CFArray
+        if let gradient = CGGradient(colorsSpace: CGColorSpaceCreateDeviceRGB(), colors: colors, locations: [0, 1]) {
+            ctx.drawLinearGradient(gradient, start: CGPoint(x: 0, y: canvas.height), end: .zero, options: [])
+        }
+        ctx.translateBy(x: margin, y: margin)
+        ctx.setShadow(offset: CGSize(width: 0, height: -6), blur: 24, color: NSColor(white: 0, alpha: 0.5).cgColor)
+        ctx.setFillColor(NSColor(srgbRed: 0.13, green: 0.14, blue: 0.17, alpha: 0.96).cgColor)
         ctx.addPath(CGPath(roundedRect: CGRect(origin: .zero, size: size), cornerWidth: 18, cornerHeight: 18, transform: nil))
         ctx.fillPath()
+        ctx.setShadow(offset: .zero, blur: 0)
         layer.render(in: ctx)
         if let image = ctx.makeImage() {
             let rep = NSBitmapImageRep(cgImage: image)

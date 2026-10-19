@@ -92,7 +92,7 @@ final class Hub {
         server.start(preferred: Settings.shared.preferredPort) { p in
             Task { @MainActor in
                 Hub.shared.port = p
-                Hub.shared.discovery.start()
+                if !(Paths.isTest && Paths.env["DROPDOCK_DEMO"] != nil) { Hub.shared.discovery.start() }
             }
         }
         let ws = NSWorkspace.shared.notificationCenter

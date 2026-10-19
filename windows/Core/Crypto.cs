@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DropDock.Core
 {
-    /// <summary>Primitives shared with the Mac build. See PROTOCOL.md.</summary>
+    /// <summary>Primitives shared with the Mac build. The wire format is described in README.md (Protocol).</summary>
     public static class DDCrypto
     {
         public const string Alphabet = "0123456789ABCDEFGHJKMNPQRSTVWXYZ";

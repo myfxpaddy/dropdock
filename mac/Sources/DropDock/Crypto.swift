@@ -8,7 +8,7 @@ enum CryptoError: Error {
     case badKey
 }
 
-/// Primitives shared with the Windows build. See PROTOCOL.md.
+/// Primitives shared with the Windows build. The wire format is described in README.md (Protocol).
 enum DDCrypto {
     static let alphabet = Array("0123456789ABCDEFGHJKMNPQRSTVWXYZ")
 

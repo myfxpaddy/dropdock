@@ -1,10 +1,10 @@
 import AppKit
 
 /// Everything needed to put DropDock on another computer. The prompts live in install/*.txt so the
-/// apps and INSTALL.md always show the same words.
+/// two apps always show the same words.
 enum Setup {
     static let repo = "https://github.com/myfxpaddy/dropdock"
-    static let guide = repo + "/blob/main/INSTALL.md"
+    static let guide = repo + "#installation"
     static let macCommand = "curl -fsSL https://raw.githubusercontent.com/myfxpaddy/dropdock/main/install/mac.sh | bash"
     static let windowsCommand = "irm https://raw.githubusercontent.com/myfxpaddy/dropdock/main/install/windows.ps1 | iex"
 

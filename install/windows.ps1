@@ -63,10 +63,10 @@ Write-Host ''
 
 $public = Get-NetConnectionProfile -ErrorAction SilentlyContinue | Where-Object { $_.NetworkCategory -eq 'Public' }
 if ($public) {
-    Write-Host "Note: the network '$($public[0].Name)' is set to Public. DropDock needs it set to Private (see INSTALL.md)." -ForegroundColor Yellow
+    Write-Host "Note: the network '$($public[0].Name)' is set to Public. DropDock needs it set to Private (see the README, Windows section)." -ForegroundColor Yellow
 }
 $defender = Get-MpPreference -ErrorAction SilentlyContinue
 if ($defender -and $defender.EnableControlledFolderAccess -eq 1) {
-    Write-Host 'Note: Controlled folder access is on, which stops DropDock saving into Documents (see INSTALL.md).' -ForegroundColor Yellow
+    Write-Host 'Note: Controlled folder access is on, which stops DropDock saving into Documents (see the README, Windows section).' -ForegroundColor Yellow
 }
 Write-Host "Log: $env:APPDATA\DropDock\dropdock.log"
